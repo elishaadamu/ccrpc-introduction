@@ -136,7 +136,7 @@ export default async function Page({
         <section className="grid-container usa-section">
           {sideNavItems ? (
             <div className="grid-row grid-gap">
-              <div className="desktop:grid-col-3">
+              <div className="desktop:grid-col-3 sticky-sidebar-wrapper">
                 <aside className="sticky-sidebar">
                   <SideNav items={sideNavItems} />
                 </aside>

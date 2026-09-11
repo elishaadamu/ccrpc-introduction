@@ -130,6 +130,7 @@ export default function Header() {
                   />
                 </div>
                 <span
+                  className="header-title-text"
                   style={{
                     color: '#1b1b1b',
                     fontWeight: 700,
@@ -170,23 +171,22 @@ export default function Header() {
               <img src="/lrtp2045/img/close.svg" alt="Close" />
             </button>
 
-            <ul className="usa-nav__primary usa-accordion" style={{ display: 'flex', flexWrap: 'nowrap', alignItems: 'center' }}>
+            <ul className="usa-nav__primary usa-accordion">
               {navItems.map((item) => {
                 const active = isItemActive(item.href, item.children);
 
                 if (!item.children) {
                   return (
-                    <li key={item.label} className="usa-nav__primary-item" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
+                    <li key={item.label} className="usa-nav__primary-item">
                       <Link
                         className={`usa-nav__link ${active ? 'usa-current' : ''}`}
                         href={item.href || '#'}
-                        style={{ whiteSpace: 'nowrap' }}
                         onClick={() => {
                           setMobileMenuOpen(false);
                           setOpenDropdown(null);
                         }}
                       >
-                        <span style={{ whiteSpace: 'nowrap' }}>{item.label}</span>
+                        <span>{item.label}</span>
                       </Link>
                     </li>
                   );
@@ -195,19 +195,18 @@ export default function Header() {
                 const isExpanded = openDropdown === item.id;
 
                 return (
-                  <li key={item.label} className="usa-nav__primary-item" style={{ position: 'relative', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                  <li key={item.label} className="usa-nav__primary-item">
                     <button
                       className={`usa-accordion__button usa-nav__link ${active ? 'usa-current' : ''}`}
                       aria-expanded={isExpanded ? 'true' : 'false'}
                       aria-controls={item.id}
                       type="button"
-                      style={{ whiteSpace: 'nowrap' }}
                       onClick={(e) => {
                         e.stopPropagation();
                         toggleDropdown(item.id || '');
                       }}
                     >
-                      <span style={{ whiteSpace: 'nowrap' }}>{item.label}</span>
+                      <span>{item.label}</span>
                     </button>
                     <div
                       id={item.id}

@@ -59,16 +59,110 @@ body {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
   }
+}
+
+/* Mobile Navigation (under 64em / 1024px) */
+@media all and (max-width: 63.99em) {
+  /* Hide agency title text on mobile */
+  .header-title-text {
+    display: none !important;
+  }
 
   .usa-nav__primary {
     display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .usa-nav__primary .usa-nav__primary-item {
+    width: 100% !important;
+    display: block !important;
+    white-space: normal !important;
+    border-top: 1px solid #dcdee0 !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+  }
+
+  .usa-nav__primary .usa-accordion__button,
+  .usa-nav__primary .usa-nav__link {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0.85rem 1rem !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    font-family: Montserrat, sans-serif !important;
+    white-space: normal !important;
+    text-align: left !important;
+    color: #1b1b1b !important;
+    border-radius: 0 !important;
+  }
+
+  .usa-nav__primary .usa-accordion__button span,
+  .usa-nav__primary .usa-nav__link span {
+    white-space: normal !important;
+  }
+
+  .usa-nav__primary .usa-accordion__button {
+    background-position: right 1rem center !important;
+  }
+
+  .usa-nav__submenu {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    background-color: #162e51 !important;
+    box-shadow: none !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0 !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+  }
+
+  .usa-nav__submenu-item {
+    white-space: normal !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .usa-nav__submenu-item a {
+    padding: 0.5rem 0.5rem !important;
+    font-size: 0.95rem !important;
+    color: #ffffff !important;
+    display: block !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+}
+
+/* Desktop Navigation (64em / 1024px and up) */
+@media all and (min-width: 64em) {
+  .header-title-text {
+    display: inline-block !important;
+  }
+
+  .usa-nav__primary {
+    display: flex !important;
+    flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
   }
 
   .usa-nav__primary .usa-nav__primary-item {
     white-space: nowrap !important;
     flex-shrink: 0 !important;
+    border-top: none !important;
+    position: relative !important;
   }
 
   .usa-nav__primary .usa-accordion__button,
@@ -76,7 +170,7 @@ body {
     font-size: 0.81rem !important;
     font-weight: 700 !important;
     font-family: Montserrat, sans-serif !important;
-    padding: 0.85rem 0.55rem !important;
+    padding: 0.85rem 0.5rem !important;
     white-space: nowrap !important;
     display: inline-flex !important;
     align-items: center !important;
@@ -92,7 +186,7 @@ body {
 
   .usa-nav__primary .usa-accordion__button {
     padding-right: 1.35rem !important;
-    background-position: right 0.4rem center !important;
+    background-position: right 0.35rem center !important;
   }
 
   .usa-nav__primary button[aria-expanded="true"] {
@@ -103,31 +197,66 @@ body {
   .usa-header--extended [aria-expanded="true"]::after {
     background-color: #005ea2 !important;
     height: 0.25rem !important;
-    left: 0.45rem !important;
-    right: 0.45rem !important;
+    left: 0.25rem !important;
+    right: 0.25rem !important;
     bottom: 0 !important;
   }
 
-  .usa-header--extended .usa-current::after,
-  .usa-header--extended .usa-nav__link:hover::after {
-    left: 0.45rem !important;
-    right: 0.45rem !important;
+  .usa-header--extended .usa-nav__primary > .usa-nav__primary-item > .usa-current::after,
+  .usa-header--extended .usa-nav__primary > .usa-nav__primary-item > .usa-nav__link:hover::after {
+    left: 0.25rem !important;
+    right: 0.25rem !important;
+  }
+
+  /* Completely remove underline bar in dropdown submenu */
+  .usa-nav__submenu .usa-current::after,
+  .usa-nav__submenu .usa-nav__link::after,
+  .usa-nav__submenu a::after,
+  .usa-nav__submenu-item::after,
+  .usa-nav__submenu-item a::after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
   }
 
   .usa-nav__submenu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: auto !important;
     background-color: #162e51 !important;
-    min-width: 17rem !important;
-    max-width: 25rem !important;
+    min-width: 18rem !important;
+    max-width: min(34rem, 90vw) !important;
     width: max-content !important;
     padding: 0.85rem 1.25rem !important;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28) !important;
     z-index: 500 !important;
     border-radius: 0 0 4px 4px !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+  }
+
+  .usa-nav__submenu-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    white-space: normal !important;
+  }
+
+  .usa-nav__primary .usa-nav__primary-item:last-child .usa-nav__submenu {
+    right: 0 !important;
+    left: auto !important;
   }
 
   .usa-nav__submenu-item {
     margin-bottom: 0.65rem !important;
     line-height: 1.35 !important;
+    white-space: normal !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    position: relative;
   }
 
   .usa-nav__submenu-item:last-child {
@@ -142,29 +271,66 @@ body {
     display: block !important;
     padding: 0.15rem 0 !important;
     text-decoration: none !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
     transition: color 0.15s ease-in-out;
   }
 
   .usa-nav__submenu-item a:hover {
     color: #97d4ea !important;
-    text-decoration: underline !important;
+    text-decoration: none !important;
     background-color: transparent !important;
   }
 
   .usa-nav__submenu-item a.usa-current {
     font-weight: 700 !important;
     color: #00bde3 !important;
+    text-decoration: none !important;
   }
 }
 
-/* Section Sidebar Styling */
-.sticky-sidebar {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 5rem;
-  align-self: flex-start;
-  max-height: calc(100vh - 6rem);
-  overflow-y: auto;
+/* Section Sidebar Sticky Styling (Desktop Only) */
+@media (min-width: 64em) {
+  .usa-section .grid-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+
+  .sticky-sidebar-wrapper,
+  .usa-layout-docs__sidenav {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 1.5rem !important;
+    align-self: flex-start !important;
+    max-height: calc(100vh - 3rem) !important;
+    overflow-y: auto !important;
+    scrollbar-width: thin;
+    z-index: 50 !important;
+  }
+
+  .sticky-sidebar {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 1.5rem !important;
+    width: 100% !important;
+  }
+}
+
+/* Section Sidebar Static on Mobile */
+@media (max-width: 63.99em) {
+  .sticky-sidebar-wrapper,
+  .usa-layout-docs__sidenav {
+    position: static !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin-bottom: 2rem !important;
+    background: transparent !important;
+  }
 }
 
 .usa-sidenav {
@@ -184,11 +350,11 @@ body {
 
 .usa-sidenav__item a {
   display: block;
-  padding: 0.65rem 1rem;
+  padding: 0.75rem 1rem;
   color: #565c65;
-  font-size: 0.92rem;
+  font-size: 1.1rem !important;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.4 !important;
   text-decoration: none;
   border-left: 4px solid transparent;
 }
@@ -213,9 +379,10 @@ body {
 }
 
 .usa-sidenav__sublist .usa-sidenav__item a {
-  padding: 0.45rem 1rem 0.45rem 1.75rem;
-  font-size: 0.85rem;
+  padding: 0.5rem 1rem 0.5rem 1.85rem;
+  font-size: 1.02rem !important;
   font-weight: 400;
+  line-height: 1.4 !important;
   color: #565c65;
   border-left: 4px solid transparent;
 }
@@ -673,38 +840,7 @@ body {
   overflow-x: clip;
 }
 
-/* Sidebar Sticky & Responsive Spacing */
-@media (min-width: 64em) {
-  .usa-section .grid-row {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-  }
-
-  .usa-layout-docs__sidenav {
-    position: -webkit-sticky !important;
-    position: sticky !important;
-    top: 5.5rem !important;
-    margin-top: 1rem;
-    align-self: flex-start !important;
-    max-height: calc(100vh - 6.5rem) !important;
-    overflow-y: auto !important;
-    scrollbar-width: thin;
-    z-index: 50;
-  }
-
-  .usa-layout-docs__sidenav nav {
-    width: 100%;
-  }
-}
-
 @media (max-width: 63.99em) {
-  /* Only target the grid row that contains the side nav and main content */
-  .usa-section .grid-row {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
   /* Ensure footer social links stay horizontal */
   .usa-footer .grid-row {
     flex-direction: row !important;
@@ -714,15 +850,6 @@ body {
   /* Specifically the contact heading and address might need stacking but social links should be row */
   .usa-footer__social-links.grid-row {
     flex-direction: row !important;
-  }
-
-  .usa-layout-docs__sidenav {
-    order: -1 !important;
-    margin-bottom: 2rem;
-    width: 100% !important;
-  }
-  .usa-layout-docs__main {
-    order: 1 !important;
   }
 }
 

@@ -1,0 +1,11 @@
+## CLAUSES FOR CONSTRUCTION/USE/ACCESS TO REAL PROPERTY ACQUIRED UNDER THE ACTIVITY, FACILITY OR PROGRAM
+
+The following clauses will be included in deeds, licenses, permits, or similar instruments/agreements entered into by <b>CCRPC</b> pursuant to the provisions of Assurance 7(b):
+
+A. The (grantee, licensee, permittee, etc., as appropriate) for himself/herself, his/her heirs, personal representatives, successors in interest, and assigns, as a part of the consideration hereof, does hereby covenant and agree (in the case of deeds and leases add, “as a covenant running with the land”) that (1) no person on the ground of race, color, or national origin, will be excluded from participation in, denied the benefits of, or be otherwise subjected to discrimination in the use of said facilities, (2) that in the construction of any improvements on, over, or under such land, and the furnishing of services thereon, no person on the ground of race, color, or national origin, will be excluded from participation in, denied the benefits of, or otherwise be subjected to discrimination, (3) that the (grantee, licensee, lessee, permittee, etc.) will use the premises in compliance with all other requirements imposed by or pursuant to the Acts and Regulations, as amended, set forth in this Assurance.
+
+B. With respect to (licenses, leases, permits, etc.), in the event of breach of any of the above of the above Non-discrimination covenants, <b>CCRPC</b> will have the right to terminate the (license, permits, etc., as appropriate) and to enter or re-enter and repossess said land and the facilities thereon, and hold the same as if said (license, permit, etc., as appropriate) had never been made or issued.*
+
+C. With respect to deeds, in the event of breach of any of the above Non-discrimination covenants, <b>CCRPC</b> will there upon revert to and vest in and become the absolute property of <b>CCRPC</b> and its assigns.*
+
+(*Reverter clause and related language to be used only when it is determined that such a clause is necessary to make clear the purpose of Title VI.)

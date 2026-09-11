@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-interface NavLink {
+export interface NavLink {
   href: string;
   label: string;
   active?: boolean;
@@ -13,24 +13,23 @@ interface SideNavProps {
 
 export default function SideNav({ items }: SideNavProps) {
   return (
-    <nav aria-label="Secondary navigation" className="site-sidenav-wrapper">
+    <nav aria-label="Section navigation" className="site-sidenav-wrapper">
       <ul className="usa-sidenav">
         {items.map((item, index) => {
-          const itemHref = item.href.includes("#") ? item.href : `${item.href}#main-section`;
           return (
             <li key={index} className="usa-sidenav__item">
               <Link
-                href={itemHref}
+                href={item.href}
                 className={item.active ? "usa-current" : ""}
                 aria-current={item.active ? "page" : undefined}
               >
                 {item.label}
               </Link>
-              {item.subItems && item.subItems.length > 0 && (
+              {item.active && item.subItems && item.subItems.length > 0 && (
                 <ul className="usa-sidenav__sublist">
                   {item.subItems.map((sub, subIndex) => (
                     <li key={subIndex} className="usa-sidenav__item">
-                      <Link href={sub.href}>{sub.label}</Link>
+                      <a href={sub.href}>{sub.label}</a>
                     </li>
                   ))}
                 </ul>

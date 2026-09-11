@@ -2,16 +2,31 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { navItems } from '@/lib/navigation';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
 
-  // Close mobile menu when pathname changes
+  // Close mobile menu and dropdowns when pathname changes
   useEffect(() => {
     setMobileMenuOpen(false);
+    setOpenDropdown(null);
   }, [pathname]);
+
+  // Click outside to close dropdowns
+  useEffect(() => {
+    const handleDocumentClick = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener('click', handleDocumentClick);
+    return () => document.removeEventListener('click', handleDocumentClick);
+  }, []);
 
   // Prevent background scroll when mobile menu is open
   useEffect(() => {
@@ -25,11 +40,35 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
-  const isIntroActive =
-    !pathname ||
-    pathname === '/' ||
-    pathname === '/introduction' ||
-    pathname.includes('introduction');
+  // Helper to check active state
+  const isItemActive = (href?: string, children?: { href: string }[]) => {
+    if (!pathname) return false;
+    const currentPath = pathname.replace(/\/$/, '') || '/';
+
+    if (href) {
+      const cleanHref = href.replace(/\/$/, '') || '/';
+      if (
+        cleanHref === '/introduction' &&
+        (currentPath === '/' || currentPath === '/introduction' || currentPath.includes('introduction'))
+      ) {
+        return true;
+      }
+      return currentPath === cleanHref || currentPath === `/title-vi-2024${cleanHref}`;
+    }
+
+    if (children) {
+      return children.some((child) => {
+        const childHref = child.href.replace(/\/$/, '');
+        return currentPath === childHref || currentPath === `/title-vi-2024${childHref}`;
+      });
+    }
+
+    return false;
+  };
+
+  const toggleDropdown = (id: string) => {
+    setOpenDropdown((prev) => (prev === id ? null : id));
+  };
 
   return (
     <>
@@ -116,6 +155,7 @@ export default function Header() {
         </div>
 
         <nav
+          ref={navRef}
           role="navigation"
           className={`usa-nav ${mobileMenuOpen ? 'is-visible' : ''}`}
           aria-label="Main site navigation"
@@ -130,16 +170,79 @@ export default function Header() {
               <img src="/lrtp2045/img/close.svg" alt="Close" />
             </button>
 
-            <ul className="usa-nav__primary usa-accordion">
-              <li className="usa-nav__primary-item">
-                <Link
-                  className={`usa-nav__link ${isIntroActive ? 'usa-current' : ''}`}
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span>Introduction</span>
-                </Link>
-              </li>
+            <ul className="usa-nav__primary usa-accordion" style={{ display: 'flex', flexWrap: 'nowrap', alignItems: 'center' }}>
+              {navItems.map((item) => {
+                const active = isItemActive(item.href, item.children);
+
+                if (!item.children) {
+                  return (
+                    <li key={item.label} className="usa-nav__primary-item" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
+                      <Link
+                        className={`usa-nav__link ${active ? 'usa-current' : ''}`}
+                        href={item.href || '#'}
+                        style={{ whiteSpace: 'nowrap' }}
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          setOpenDropdown(null);
+                        }}
+                      >
+                        <span style={{ whiteSpace: 'nowrap' }}>{item.label}</span>
+                      </Link>
+                    </li>
+                  );
+                }
+
+                const isExpanded = openDropdown === item.id;
+
+                return (
+                  <li key={item.label} className="usa-nav__primary-item" style={{ position: 'relative', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                    <button
+                      className={`usa-accordion__button usa-nav__link ${active ? 'usa-current' : ''}`}
+                      aria-expanded={isExpanded ? 'true' : 'false'}
+                      aria-controls={item.id}
+                      type="button"
+                      style={{ whiteSpace: 'nowrap' }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleDropdown(item.id || '');
+                      }}
+                    >
+                      <span style={{ whiteSpace: 'nowrap' }}>{item.label}</span>
+                    </button>
+                    <div
+                      id={item.id}
+                      className="usa-nav__submenu"
+                      aria-hidden={!isExpanded}
+                      style={{
+                        display: isExpanded ? 'block' : 'none',
+                      }}
+                    >
+                      <ul className="usa-nav__submenu-list">
+                        {item.children.map((subItem) => {
+                          const isSubActive =
+                            pathname?.replace(/\/$/, '') === subItem.href.replace(/\/$/, '') ||
+                            pathname?.replace(/\/$/, '') === `/title-vi-2024${subItem.href.replace(/\/$/, '')}`;
+
+                          return (
+                            <li key={subItem.label} className="usa-nav__submenu-item">
+                              <Link
+                                href={subItem.href}
+                                className={isSubActive ? 'usa-current' : ''}
+                                onClick={() => {
+                                  setMobileMenuOpen(false);
+                                  setOpenDropdown(null);
+                                }}
+                              >
+                                {subItem.label}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </nav>

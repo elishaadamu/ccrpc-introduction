@@ -1,0 +1,9 @@
+## Title VI Document, 2024 Update
+
+The following report has been prepared in response to the Federal Transit Administration (FTA) requirements set out in FTA Circular 4702.1B (2012), Title VI Requirements and Guidelines for Federal Transit Administration Recipients, pertaining to compliance with Title VI provisions of the 1964 Civil Rights Act.
+
+FTA Circular 4702.1B requires all Metropolitan Planning Organizations (MPOs) to review Title VI practices for any funding received from the FTA. The Champaign Urbana Urbanized Area Transportation Study (CUUATS) is the transportation planning entity of the Champaign County Regional Planning Commission (CCRPC), which is the designated MPO for the Champaign-Urbana urban area. This MPO covers an area with a population of approximately 150,000. CUUATS is a recipient of FTA and Federal Highway Administration (FHWA) planning funds via the Illinois Department of Transportation (IDOT). These funds are used to complete MPO-related transportation planning processes such as the Long Range Transportation Plan (LRTP), the Transportation Improvement Program (TIP), the Unified Planning Work Program (UPWP), and other documents. These funds are not used to construct or implement transit-related projects or programs.
+
+The Champaign-Urbana Mass Transit District (MTD) is a CUUATS member agency. MTD completes its own Title VI review process for the FTA.
+
+Review each section to learn about the background of the Title VI program, CUUATS analysis of the region and specific demographic populations, CUUATS Public Participation Plan, required Title VI assurance and forms, and the Appendices for legal

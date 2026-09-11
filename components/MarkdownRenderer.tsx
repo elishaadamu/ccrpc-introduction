@@ -56,7 +56,8 @@ export default function MarkdownRenderer({ content, baseUrl }: MarkdownRendererP
 
     let csvUrl = attrs.url;
     if (csvUrl && !csvUrl.startsWith('/') && !csvUrl.startsWith('http')) {
-      csvUrl = `/lrtp2045/${baseUrl}/${csvUrl}`;
+      const cleanBase = baseUrl.replace(/^\/+|\/+$/g, '');
+      csvUrl = `/${cleanBase}/${csvUrl}`;
     }
 
     if (tagName === 'rpc-chart') {
@@ -207,7 +208,11 @@ function markdownComponents(baseUrl: string, setLightboxImage: (src: string) => 
     li: ({node, ...props}: any) => <li {...props} className="markdown-list-item margin-bottom-2" style={{ fontSize: '1.22rem', lineHeight: 1.75, maxWidth: '100%' }} />,
     a: ({node, ...props}: any) => {
       const href = (props.href || "") as string;
-      const relativeHref = href.replace('https://ccrpc.gitlab.io/lrtp2045/', '/').replace(/\/$/, '');
+      let relativeHref = href
+        .replace('https://ccrpc.gitlab.io/lrtp2045/', '/')
+        .replace('https://ccrpc.gitlab.io/title-vi-2024/', '/')
+        .replace(/\/$/, '');
+      if (!relativeHref) relativeHref = '/';
       if (relativeHref.startsWith('/') || relativeHref.startsWith('#')) {
         return <Link href={relativeHref} className="usa-link" style={{ fontSize: 'inherit' }} {...props}>{props.children}</Link>;
       }
@@ -224,11 +229,8 @@ function markdownComponents(baseUrl: string, setLightboxImage: (src: string) => 
       const src = (props.src || "") as string;
       let fixedSrc = src;
       if (!src.startsWith('http') && !src.startsWith('/')) {
-        fixedSrc = `/lrtp2045/${baseUrl}/${src}`;
-      } else if (src.startsWith('/lrtp2045/')) {
-        // keep as is
-      } else if (src.startsWith('/')) {
-         fixedSrc = `/lrtp2045${src}`;
+        const cleanBase = baseUrl.replace(/^\/+|\/+$/g, '');
+        fixedSrc = `/${cleanBase}/${src}`;
       }
       return (
         <img 
@@ -236,7 +238,7 @@ function markdownComponents(baseUrl: string, setLightboxImage: (src: string) => 
           src={fixedSrc} 
           className="usa-img margin-y-2 cursor-zoom-in" 
           onClick={() => setLightboxImage(fixedSrc)}
-          style={{ cursor: 'zoom-in' }}
+          style={{ cursor: 'zoom-in', maxWidth: '100%', height: 'auto' }}
         />
       );
     },

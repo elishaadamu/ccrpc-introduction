@@ -47,7 +47,7 @@ body {
 .grid-container,
 .usa-header--extended .usa-navbar,
 .usa-header--extended .usa-nav__inner {
-  max-width: 82rem !important;
+  max-width: 95rem !important;
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
 }
@@ -59,6 +59,170 @@ body {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
   }
+
+  .usa-nav__primary {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+  }
+
+  .usa-nav__primary .usa-nav__primary-item {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .usa-nav__primary .usa-accordion__button,
+  .usa-nav__primary .usa-nav__link {
+    font-size: 0.81rem !important;
+    font-weight: 700 !important;
+    font-family: Montserrat, sans-serif !important;
+    padding: 0.85rem 0.55rem !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+  }
+
+  .usa-nav__primary .usa-accordion__button span,
+  .usa-nav__primary .usa-nav__link span {
+    white-space: nowrap !important;
+    display: inline-block !important;
+  }
+
+  .usa-nav__primary .usa-accordion__button {
+    padding-right: 1.35rem !important;
+    background-position: right 0.4rem center !important;
+  }
+
+  .usa-nav__primary button[aria-expanded="true"] {
+    background-color: #162e51 !important;
+    color: #ffffff !important;
+  }
+
+  .usa-header--extended [aria-expanded="true"]::after {
+    background-color: #005ea2 !important;
+    height: 0.25rem !important;
+    left: 0.45rem !important;
+    right: 0.45rem !important;
+    bottom: 0 !important;
+  }
+
+  .usa-header--extended .usa-current::after,
+  .usa-header--extended .usa-nav__link:hover::after {
+    left: 0.45rem !important;
+    right: 0.45rem !important;
+  }
+
+  .usa-nav__submenu {
+    background-color: #162e51 !important;
+    min-width: 17rem !important;
+    max-width: 25rem !important;
+    width: max-content !important;
+    padding: 0.85rem 1.25rem !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28) !important;
+    z-index: 500 !important;
+    border-radius: 0 0 4px 4px !important;
+  }
+
+  .usa-nav__submenu-item {
+    margin-bottom: 0.65rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .usa-nav__submenu-item:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .usa-nav__submenu-item a {
+    color: #ffffff !important;
+    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+    line-height: 1.35 !important;
+    display: block !important;
+    padding: 0.15rem 0 !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease-in-out;
+  }
+
+  .usa-nav__submenu-item a:hover {
+    color: #97d4ea !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+  }
+
+  .usa-nav__submenu-item a.usa-current {
+    font-weight: 700 !important;
+    color: #00bde3 !important;
+  }
+}
+
+/* Section Sidebar Styling */
+.sticky-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5rem;
+  align-self: flex-start;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+
+.usa-sidenav {
+  border-left: 1px solid #dfe1e2;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.usa-sidenav__item {
+  border-top: 1px solid #dfe1e2;
+}
+
+.usa-sidenav__item:first-child {
+  border-top: none;
+}
+
+.usa-sidenav__item a {
+  display: block;
+  padding: 0.65rem 1rem;
+  color: #565c65;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+}
+
+.usa-sidenav__item a:hover {
+  color: #005ea2;
+  background-color: #f0f0f0;
+}
+
+.usa-sidenav__item a.usa-current {
+  color: #005ea2;
+  font-weight: 700;
+  border-left: 4px solid #005ea2;
+  background-color: transparent;
+}
+
+.usa-sidenav__sublist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.usa-sidenav__sublist .usa-sidenav__item a {
+  padding: 0.45rem 1rem 0.45rem 1.75rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #565c65;
+  border-left: 4px solid transparent;
+}
+
+.usa-sidenav__sublist .usa-sidenav__item a:hover {
+  color: #005ea2;
+  background-color: #eef2f5;
 }
 
 .plandoc-content,
